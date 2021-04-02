@@ -2,10 +2,31 @@
   font-size: 0.875rem;
   color: var(--info);
   margin-right: 1.25rem;
-  text-transform: capitalize;
   svg {
     margin-right: 0.5rem;
     width: 20px;
     height: 20px;
+  }
+}
+.headerContainer {
+  height: 6.5625rem;
+  border-bottom: 1px solid var(--gray-800);
+}
+
+.headerContent {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 6.5625rem;
+
+  display: flex;
+  align-items: center;
+
+  img {
+    transition: filter 0.2s;
+    &:hover {
+      cursor: pointer;
+      filter: brightness(0.8);
+    }
   }
 }

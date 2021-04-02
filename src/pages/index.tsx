@@ -61,6 +61,13 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
       <Head>
         <title>spacetraveling</title>
       </Head>
+      <header className={commonStyles.headerContainer}>
+        <div className={commonStyles.headerContent}>
+          <Link href="/">
+            <img src="/logo.svg" alt="logo" />
+          </Link>
+        </div>
+      </header>
       <main className={styles.containerPosts}>
         <div className={styles.content}>
           {posts?.results.map(post => (
@@ -68,9 +75,9 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
               <a>
                 <h2>{post.data.title}</h2>
                 <p>{post.data.subtitle}</p>
-                <time>
+                <time className={commonStyles.timeIcon}>
                   <FiCalendar />
-                  {post.first_publication_date}
+                  {formataData(post.first_publication_date, 'dd MMM yyyy')}
                 </time>
                 <span>
                   <FiUser />
@@ -107,10 +114,7 @@ export const getStaticProps: GetStaticProps = async () => {
     results: postsResponse.results.map(
       x =>
         ({
-          first_publication_date: formataData(
-            x.first_publication_date,
-            'dd MMM yyyy'
-          ),
+          first_publication_date: x.first_publication_date,
           uid: x.uid,
           data: {
             author: x.data.author,
